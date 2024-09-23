@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\apicontroller\PatientsController;
+use App\Http\Controllers\PatientController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::get('patients',[PatientsController::class,'index']);
+Route::get('patients/{id}',[PatientsController::class,'show']);
+
+Route::post('patients', [PatientsController::class, 'create']);
+Route::delete('patients/{id}',[PatientsController::class,'destroy']);
+Route::put('patients/{id}',[PatientsController::class,'update']);
+
+
+

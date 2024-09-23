@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('gender');
             $table->integer('phone_number');
             $table->string('address');
-            $table->text('medical_hestory')->default(''); 
+         
            $table->string('email');
-   
+
             $table->timestamps();
         });
     }

@@ -31,17 +31,12 @@ class PatientController extends Controller
             'phone_number' => 'required|string|max:15',
             'email' => 'required|string|email|max:255|unique:patients',
             'gender' => 'required|string|max:15',
-            'organizations' => 'nullable|array',
-            'organizations.*' => 'exists:organizations,id',
+         
         ]);
 
         // إنشاء المريض وتخزينه
         $patient = Patient::create($validated);
 
-        // إضافة المنظمات (organizations) إذا كانت موجودة
-        if ($request->has('organizations')) {
-            $patient->organizations()->attach($request->organizations);
-        }
 
         return redirect()->route('patients.index')->with('success', 'Patient created successfully.');
     }
